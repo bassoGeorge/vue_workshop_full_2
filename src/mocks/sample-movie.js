@@ -19,7 +19,7 @@ export default {
 		},
 		{
 			"Source": "Rotten Tomatoes",
-			"Value" : "82%"
+			"Value" : "88%"
 		},
 		{
 			"Source": "Metacritic",
