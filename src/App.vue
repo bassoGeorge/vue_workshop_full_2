@@ -1,17 +1,21 @@
 <template>
 	<div id="app">
-		<p>Hello World</p>
+		<Movie v-bind:movie="mockMovie"></Movie>
 	</div>
 </template>
 
 <script>
+	import Movie from './components/Movie'
 
-	require('bootstrap/dist/css/bootstrap.min.css')
+	import mockMovie from './mocks/sample-movie';
 
 	export default {
 		name      : 'app',
+		data: () => ({
+			mockMovie
+		}),
 		components: {
-			// key-value
+			Movie
 		}
 	}
 </script>
