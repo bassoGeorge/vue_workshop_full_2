@@ -3,7 +3,14 @@
 		<Jumbotron></Jumbotron>
 		<div class="container">
 			<h1>Movies and shows</h1>
-			<Movie v-bind:movie="mockMovie"></Movie>
+			<div class="row">
+				<template v-for="(movie, index) in movies">
+					<div class="w-100" v-if="index % 3 == 0"></div>
+					<div class="col" v-bind:key="index">
+						<Movie :movie="movie"></Movie>
+					</div>
+				</template>
+			</div>
 		</div>
 	</div>
 </template>
@@ -13,12 +20,19 @@
 	import Jumbotron from './components/Jumbotron'
 
 	import mockMovie from './mocks/sample-movie';
+	import movieAPI from './API/movies';
 
 	export default {
 		name      : 'app',
 		data: () => ({
-			mockMovie
+			mockMovie,
+			movies: []
 		}),
+		mounted: function() {
+			movieAPI.getAll().then((movies) => {
+				this.movies = movies;
+			})
+		},
 		components: {
 			Movie,
 			Jumbotron
